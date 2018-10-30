@@ -96,11 +96,8 @@ public class Day01 {
 
         }
 
-
         if(lo<start) quickSort(source,lo,start-1);//左边序列。第一个索引位置到关键值索引-1
         if(hi>end) quickSort(source,end+1,hi);//右边序列。从关键值索引+1到最后一个
-
-
 
     }
 
