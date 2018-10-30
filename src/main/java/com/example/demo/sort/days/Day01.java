@@ -38,7 +38,7 @@ public class Day01 {
     public static void selectSort(int[] source) {
         for (int i = 0; i < source.length - 1; i++) {
             int lo = i;
-            for (int j = i + 1; j < source.length; j++) {
+            for (int j = i + 1; j < source.length; j++) {//找到最小位置的index
                 if (source[lo] > source[j]) {
                     lo = j;
                 }
@@ -50,18 +50,18 @@ public class Day01 {
     }
     /**
      * 插入排序 是在简单排序中速度最快的
-     * 思路：先假设左边都是有序的，然后循环找个值应该插入的位置
+     * 思路：先假设左边都是有序的，然后循环找到值应该插入的位置
      *
      * */
     public static void insertSort(int[] source){
-        for(int i=1;i<source.length;i++){
+        for(int i =1;i<source.length;i++){
             int temp = source[i];
             int left = i-1;
-            while (left>=0&&temp<source[left]){
+            while(left>=0&&temp<source[left]){ //如果temp比左边的小，那么左边这个应该右移
                 source[left+1] = source[left];
-                left--;
+                left--; //判断下一个left
             }
-            source[left+1]  = temp;
+            source[left+1] = temp; //在left+1这个位置上设置值
         }
 
     }
