@@ -6,7 +6,8 @@ public class Day01 {
     public static void main(String[] args) {
         int[] array = {10, 9, 112, 10, 1, 2, 7, 113};
         //  bubbleSort(array);
-        selectSort(array);
+        //selectSort(array);
+        insertSort(array);
         System.out.println(Arrays.toString(array));
 
 
@@ -46,6 +47,23 @@ public class Day01 {
             source[i] = source[lo];
             source[lo] = temp;
         }
+    }
+    /**
+     * 插入排序 是在简单排序中速度最快的
+     * 思路：先假设左边都是有序的，然后循环找个值应该插入的位置
+     *
+     * */
+    public static void insertSort(int[] source){
+        for(int i=1;i<source.length;i++){
+            int temp = source[i];
+            int left = i-1;
+            while (left>=0&&temp<source[left]){
+                source[left+1] = source[left];
+                left--;
+            }
+            source[left+1]  = temp;
+        }
+
     }
 }
 
