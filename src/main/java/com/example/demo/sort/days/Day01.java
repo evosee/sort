@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Day01 {
     public static void main(String[] args) {
-        int[] array = {10, 9, 112, 10, 1, 2, 7, 113};
+        int[] array = {10, 9, 112, 1, 2, 7, 113};
         //  bubbleSort(array);
         //selectSort(array);
         //insertSort(array);
@@ -78,8 +78,9 @@ public class Day01 {
     public static void quickSort(int[] source,int start,int end){
         int lo = start;
         int hi = end;
+        //基准值
         int key = source[start];
-        while (start<end){
+        while (start<end){//左右两边指针重合的时候退出
             while (start<end&&source[end]>=key) end--;
             if(key>source[end]){
                 int temp = source[start];
