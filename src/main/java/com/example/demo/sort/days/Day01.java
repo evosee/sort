@@ -119,7 +119,7 @@ public class Day01 {
                 return mid;
             }
         }
-        return -(low+1);//返回范围内第一个大于key的索引
+        return -(low+1);//返回范围内第一个大于key的索引并且这里索引是从1开始算
     }
 }
 
