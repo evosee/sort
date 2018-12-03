@@ -9,6 +9,8 @@ public class Day01 {
         //selectSort(array);
         //insertSort(array);
         quickSort(array,0,array.length-1);
+
+        System.out.println(binarySearch(array,0,array.length,6));
       //  sort(array,0,array.length-1);
         System.out.println(Arrays.toString(array));
 
@@ -102,7 +104,23 @@ public class Day01 {
 
     }
 
-
+    //二分查找法，每次平均二分查找
+    public static int binarySearch(int[] a,int from,int toIndex,int key){
+        int hi = toIndex-1;
+        int low = from;
+        while (low<=hi){
+            int mid = (low+hi)>>>1;
+            int mk = a[mid];
+            if(mk<key){
+                low = mid+1;
+            }else if(mk>key){
+                hi = mid-1;
+            }else{
+                return mid;
+            }
+        }
+        return -(low+1);//返回范围内第一个大于key的索引
+    }
 }
 
 

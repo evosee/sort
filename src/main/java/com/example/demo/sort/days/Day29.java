@@ -16,6 +16,7 @@ public class Day29 {
        // selectSort(a);
         //insertSort(a);
         quickSort(a,0,a.length-1);
+       // binarySearch(a,0,a.length,3);
         System.out.println(Arrays.toString(a));
     }
 
@@ -80,4 +81,6 @@ public class Day29 {
         if(lo<start) quickSort(a,lo,start-1);
         if(end<hi) quickSort(a,end+1,hi);
     }
+
+
 }
