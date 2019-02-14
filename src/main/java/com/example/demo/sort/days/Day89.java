@@ -1,38 +1,41 @@
 package com.example.demo.sort.days;
 
+
 import java.util.Arrays;
 
 /**
  * @Author: chensai
- * @Date: 2019/1/10 16:34
+ * @Date: 2019/2/14 9:52
  * @Version 1.0
  */
-public class Day70 {
+public class Day89 {
     public static void main(String[] args) {
-        int[] a = {2,1,23,14,56,78,12,2,1};
-        //bubbleSort(a);
-       // selectSort(a);
-        //insertSort(a);
+        int[] a = {2, 1, 34, 12, 34, 65, 1, 4, 6, 4, 764, 2, 24, 1};
+        // bubbleSort(a);
+        // selectSoret(a);
+     //   insertSort(a);
         quickSort(a,0,a.length-1);
-        System.out.println(binarySearch(a,0,a.length,13));
+        System.out.println(binarySearch(a,0,a.length,764));
         System.out.println(Arrays.toString(a));
     }
-    public static void bubbleSort(int[] a){
-        for(int i=0;i<a.length-1;i++){
-            for(int j=0;j<a.length-1-i;j++){
-                if(a[j]>a[j+1]){
+
+    public static void bubbleSort(int[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            for (int j = 0; j < a.length - 1 - i; j++) {
+                if (a[j] > a[j + 1]) {
                     int t = a[j];
-                    a[j] = a[j+1];
-                    a[j+1] = t;
+                    a[j] = a[j + 1];
+                    a[j + 1] = t;
                 }
             }
         }
     }
-    public static void selectSort(int[] a){
-        for(int i=0;i<a.length-1;i++){
+
+    public static void selectSoret(int[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
             int lo = i;
-            for(int j=i+1;j<a.length;j++){
-                if(a[lo]>a[j]){
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[lo] > a[j]) {
                     lo = j;
                 }
             }
@@ -41,31 +44,33 @@ public class Day70 {
             a[i] = t;
         }
     }
-    public static void insertSort(int[] a){
-        for(int i=1;i<a.length;i++){
-            int left = i-1;
+
+    public static void insertSort(int[] a) {
+        for (int i = 1; i < a.length; i++) {
+            int left = i - 1;
             int k = a[i];
-            while (left>=0&&a[left]>k){
-                a[left+1] = a[left];
+            while (left >= 0 && a[left] > k) {
+                a[left + 1] = a[left];
                 left--;
             }
-            a[left+1] = k;
+            a[left + 1] = k;
         }
     }
-    public static void quickSort(int[] a,int start,int end){
+
+    public static void quickSort(int[] a, int start, int end) {
         int lo = start;
         int hi = end;
         int k = a[start];
-        while (start<end){
-            while (start<end&&a[end]>=k) end--;
-            if(a[end]<k){
-                int t  = a[start];
+        while (start < end) {
+            while (start < end && a[end] >= k) end--;
+            if (a[end] < k) {
+                int t = a[start];
                 a[start] = a[end];
                 a[end] = t;
             }
             while (start<end&&a[start]<=k) start++;
             if(a[start]>k){
-                int t  = a[start];
+                int t = a[start];
                 a[start] = a[end];
                 a[end] = t;
             }
