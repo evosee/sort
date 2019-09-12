@@ -15,6 +15,7 @@ public class Day203 {
         //insertSort(a);
         quickSort(a,0,a.length-1);
         System.out.println(Arrays.toString(a));
+        System.out.println("11111111111111111111111");
         System.out.println(binarySearch(a,0,a.length,4234323));
     }
     public static void bubbleSort(int[] a){
