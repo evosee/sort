@@ -1,6 +1,5 @@
 package com.example.demo.sort.days;
 
-import java.util.Arrays;
 import java.util.BitSet;
 
 /**
@@ -11,8 +10,11 @@ import java.util.BitSet;
 public class BisetTest {
     public static void main(String[] args) {
         //System.out.println(getChars("java"));
-        int[] a = {2,1,23,232,32,23232323,32322};
-        System.out.println(Arrays.toString(sort(a)));
+      //  int[] a = {2,1,23,232,32,23232323,32322};
+     //   System.out.println(Arrays.toString(sort(a)));
+        BitSet bitSet = new BitSet(2);
+        System.out.println(bitSet.get(64343));
+
 
     }
     //获取String中出现的字符
