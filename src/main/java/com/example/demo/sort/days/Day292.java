@@ -5,11 +5,11 @@ import java.util.Arrays;
 /**
  * @author chensai
  * @Description
- * @Date 2020/7/23 16:24
+ * @Date 2020/7/24 13:52
  */
-public class Day291 {
+public class Day292 {
     public static void main(String[] args) {
-        int[] a ={2,13,32,43,54,657,78,89,456,67,87,453,657,78,45};
+        int[] a ={2,23,34,45,56,678,78,21,53445,567,678,345,45};
         //bubbleSort(a);
        // selectSort(a);
        // insertSort(a);
@@ -23,7 +23,7 @@ public class Day291 {
                 if(a[j]>a[j+1]){
                     int t = a[j];
                     a[j] = a[j+1];
-                    a[j+1] = t;
+                    a[j+1] =t;
                 }
             }
         }
@@ -32,14 +32,15 @@ public class Day291 {
         for(int i=0;i<a.length-1;i++){
             int lo = i;
             for(int j=i+1;j<a.length;j++){
-                if(a[lo]>a[j]){
-                    lo = j;
-                }
+               if(a[lo]>a[j]){
+                   lo = j;
+               }
             }
             int t = a[lo];
             a[lo] = a[i];
-            a[i] =t;
+            a[i] = t;
         }
+
     }
     public static void insertSort(int[] a){
         for(int i=1;i<a.length;i++){
@@ -54,7 +55,7 @@ public class Day291 {
     }
     public static void quickSort(int[] a,int start,int end){
         int lo = start;
-        int hi  =end;
+        int hi = end;
         int k = a[start];
         while (start<end){
             while (start<end&&a[end]>=k) end--;
@@ -73,18 +74,19 @@ public class Day291 {
         if(lo<start) quickSort(a,lo,start-1);
         if(end<hi) quickSort(a,end+1,hi);
     }
-    public static int binarySearch(int[] a,int start,int end ,int k){
+    public static int binarySearch(int[] a,int start,int end,int k){
         int lo = start;
         int hi = end-1;
         while (lo<=hi){
             int mid = (lo+hi)>>>1;
             int mk = a[mid];
             if(k>mk){
-                lo =mid+1;
+                lo = mid+1;
             }else if(k<mk){
                 hi = mid-1;
             }else return mid;
         }
         return -(lo+1);
+
     }
 }
