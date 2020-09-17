@@ -5,16 +5,16 @@ import java.util.Arrays;
 /**
  * @author chensai
  * @Description
- * @Date 2020/9/15 16:15
+ * @Date 2020/9/17 9:58
  */
-public class Day305 {
+public class Day306 {
     public static void main(String[] args) {
-        int[] a = {1223,34,45,65,67,786,87,98,54,657,786,5,43675,678,1};
-        //bubbleSort(a);
+        int[] a= {2,12,34,45,65,67,43,45,65,345,564,653,3};
+      //  bubbleSort(a);
        // selectSort(a);
        // insertSort(a);
         quickSort(a,0,a.length-1);
-        System.out.println(binarySearch(a,0,a.length,223131));
+        System.out.println(binarySearch(a,0,a.length,121231));
         System.out.println(Arrays.toString(a));
     }
     public static void bubbleSort(int[] a){
@@ -38,7 +38,7 @@ public class Day305 {
             }
             int t = a[lo];
             a[lo] = a[i];
-            a[i]  = t;
+            a[i] = t;
         }
     }
     public static void insertSort(int[] a){
