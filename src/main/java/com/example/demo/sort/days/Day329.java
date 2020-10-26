@@ -11,7 +11,10 @@ public class Day329 {
     public static void main(String[] args) {
         int[] a= {2,1,34,45,56,678,87,4565,765,75,453,654,65,232};
       //  bubbleSort(a);
-        selectSort(a);
+      //  selectSort(a);
+       // insertSort(a);
+        quickSort(a,0,a.length-1);
+        System.out.println(binarySearch(a,0,a.length,3532323));
         System.out.println(Arrays.toString(a));
     }
     public static void bubbleSort(int[] a){
@@ -37,5 +40,51 @@ public class Day329 {
             a[lo] = a[i];
             a[i] = t;
         }
+    }
+    public static void insertSort(int[] a){
+        for(int i=1;i<a.length;i++){
+            int left = i-1;
+            int k = a[i];
+            while (left>=0&&a[left]>k){
+                a[left+1] = a[left];
+                left--;
+            }
+            a[left+1] = k;
+        }
+    }
+    public static void quickSort(int[] a,int start,int end){
+        int lo = start;
+        int hi = end;
+        int k = a[start];
+        while (start<end){
+            while (start<end&&a[end]>=k) end--;
+            if(a[end]<k){
+                int t = a[start];
+                a[start] = a[end];
+                a[end] = t;
+            }
+            while (start<end&&a[start]<=k) start++;
+            if(a[start]>k){
+                int t = a[start];
+                a[start] = a[end];
+                a[end] = t;
+            }
+        }
+        if(lo<start) quickSort(a,lo,start-1);
+        if(end<hi) quickSort(a,end+1,hi);
+    }
+    public static int binarySearch(int[] a,int start,int end,int k){
+        int lo = start;
+        int hi = end-1;
+        while (lo<=hi){
+            int mid = (lo+hi)>>>1;
+            int mk = a[mid];
+            if(k>mk){
+                lo = mid+1;
+            }else if(k<mk){
+                hi = mid-1;
+            }else return mid;
+        }
+        return -(lo+1);
     }
 }
