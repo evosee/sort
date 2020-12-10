@@ -36,11 +36,7 @@ public class NginxSort {
 
     public List<Plan> sort(List<Plan> plans) {
         //计算总时间如果有剩余时间用公益广告替代
-        int sum = plans.stream().mapToInt(e-> e.getSecond()*e.getFrequency()).sum();
-        int surplus = TOTAL_TIME - sum;
-        int publicWeight = surplus/ONE_TIME;
-        Plan publicPlan = new Plan("",5,false,publicWeight,"公益");
-        plans.add(publicPlan);
+        addPublicPlans(plans);
         int maxWeight = plans.stream().mapToInt(Plan::getFrequency).sum();
         List<Node> nodes = plans.stream().map(e -> {
             Node node = new Node(e.getFrequency(), e.getFrequency(), maxWeight, e);
@@ -61,6 +57,14 @@ public class NginxSort {
         return r;
     }
 
+    private void addPublicPlans(List<Plan> plans) {
+        int sum = plans.stream().mapToInt(e-> e.getSecond()*e.getFrequency()).sum();
+        int surplus = TOTAL_TIME - sum;
+        int publicWeight = surplus/ONE_TIME;
+        Plan publicPlan = new Plan("",5,false,publicWeight,"公益");
+        plans.add(publicPlan);
+    }
+
     private Node select(List<Node> nodes,Node pre,Integer times) {
         //初始weight
         nodes.forEach(n->{
@@ -73,11 +77,9 @@ public class NginxSort {
         }
         node.setCurrentWeight(node.getCurrentWeight()-node.getTotalWeight());
         return node;
-
     }
 
     private Node findNode(List<Node> nodes, Node pre,Integer times) {
-
             Iterator<Node> iterator = nodes.iterator();
             while (iterator.hasNext()){
                 Node node = iterator.next();
@@ -95,9 +97,6 @@ public class NginxSort {
                 }
                 return node;
             }
-
-
         return null;
     }
-
 }
