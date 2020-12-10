@@ -8,15 +8,25 @@ package com.example.demo.sort.structure.nginx;
 public class Plan {
     private String trade;
     private int second;
-    private Boolean reject;
+    private boolean reject;
+    private int frequency;
+    private String name;
 
-    public Plan() {
-    }
 
-    public Plan(String trade, int second, Boolean reject) {
+    public Plan(String trade, int second, boolean reject,int frequency,String name) {
         this.trade = trade;
         this.second = second;
         this.reject = reject;
+        this.frequency = frequency;
+        this.name = name;
+    }
+
+    public int getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
     }
 
     public String getTrade() {
@@ -35,11 +45,27 @@ public class Plan {
         this.second = second;
     }
 
-    public Boolean getReject() {
+    public boolean getReject() {
         return reject;
     }
 
-    public void setReject(Boolean reject) {
+    public void setReject(boolean reject) {
         this.reject = reject;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Plan{" +
+                "trade='" + trade + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
