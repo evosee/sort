@@ -5,16 +5,16 @@ import java.util.Arrays;
 /**
  * @author chensai
  * @Description
- * @Date 2021/1/14 9:58
+ * @Date 2021/1/15 9:22
  */
-public class Day387 {
+public class Day388 {
     public static void main(String[] args) {
-        int[] a= {2,1,34,34,54,56,767,87,68,45,765,867,54,6745};
-       // bubbleSort(a);
-        //selectSort(a);
+        int[] a ={2,1,324,34,43,45,56,67,867,54,56,56,67,54,65,57665,3};
+        //bubbleSort(a);
+       // selectSort(a);
         //insertSort(a);
         quickSort(a,0,a.length-1);
-        System.out.println(binarySearch(a,0,a.length,34));
+        System.out.println(binarySearch(a,0,a.length-1,4));
         System.out.println(Arrays.toString(a));
     }
     public static void bubbleSort(int[] a){
@@ -54,35 +54,35 @@ public class Day387 {
     }
     public static void quickSort(int[] a,int start,int end){
         int lo = start;
-        int hi = end;
-        int k = a[start];
-        while (start<end){
-            while (start<end&&a[end]>=k) end--;
-            if(a[end]<k){
-                int t = a[start];
-                a[start] = a[end];
-                a[end] = t;
-            }
-            while (start<end&&a[start]<=k) start++;
-            if(a[start]>k){
-                int t = a[start];
-                a[start] = a[end];
-                a[end] = t;
-            }
-        }
-        if(lo< start) quickSort(a,lo, start-1);
-        if(end<hi) quickSort(a,end+1,hi);
+         int hi = end;
+         int k = a[start];
+         while (start<end){
+             while (start<end&&a[end]>=k) end--;
+             if(a[end]<k){
+                 int t= a[start];
+                 a[start] =a[end];
+                 a[end] = t;
+             }
+             while (start<end&&a[start]<=k) start++;
+             if(a[start]>k){
+                 int t= a[start];
+                 a[start] =a[end];
+                 a[end] = t;
+             }
+         }
+         if(lo<start) quickSort(a,lo,start-1);
+         if(end<hi) quickSort(a,end+1,hi);
     }
     public static int binarySearch(int[] a,int start,int end,int k){
         int lo = start;
-        int hi =end-1;
+        int hi  = end-1;
         while (lo<=hi){
             int mid = (lo+hi)>>>1;
             int mk = a[mid];
             if(k>mk){
                 lo = mid+1;
             }else if(k<mk){
-                hi= mid-1;
+                hi = mid-1;
             }else return mid;
         }
         return -(lo+1);
