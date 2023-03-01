@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Day473 {
     public static void main(String[] args) {
-        int[] a = {5,1,23,23,453,34,34,34,2,34,45,45,5,43,54,3,2,1,4,5,6,74,4,2};
+        int[] a = {5,1,23,24,453,35,36,34,2,37,45};
        // bubbleSort(a);
        // selectSort(a);
       //  insertSort(a);
@@ -66,6 +66,7 @@ public class Day473 {
                 a[end] = t;
             }
         }
+        System.out.println(Arrays.toString(a));
         if(lo<start) quickSort(a,lo,start-1);
         if(end<hi) quickSort(a,end+1,hi);
     }
