@@ -22,21 +22,29 @@ public class CalculateOperator {
             } else if (c == '+' || c == '-' || c == '*' || c == '/') {
                 while (!op.isEmpty() && !precedence(op.peek(), c)) {
                     //要先算
-                    Integer pop1 = vs.pop();
-                    Integer pop2 = vs.pop();
-                    Character pop = op.pop();
-                    vs.push(calculate(pop2, pop1, pop));
+                    cal();
                 }
                 op.push(c);
+            }else if(c=='('){
+                op.push(c);
+            }else if(c==')'){
+                while (op.peek()!='('){
+                    cal();
+                }
+                op.pop();
             }
         }
         while (!op.isEmpty()) {
-            Integer pop1 = vs.pop();
-            Integer pop2 = vs.pop();
-            Character pop = op.pop();
-            vs.push(calculate(pop2, pop1, pop));
+            cal();
         }
         return vs.pop();
+    }
+
+    private void cal() {
+        Integer pop1 = vs.pop();
+        Integer pop2 = vs.pop();
+        Character pop = op.pop();
+        vs.push(calculate(pop2, pop1, pop));
     }
 
     private boolean precedence(Character peek, Character c) {
@@ -44,6 +52,9 @@ public class CalculateOperator {
             return true;
         }
         if ((c == '*' || c == '/') && (peek == '+' || peek == '-')) {
+            return true;
+        }
+        if(peek=='('||peek==')'){
             return true;
         }
        /* if(c=='+'||c=='-'){
@@ -72,7 +83,7 @@ public class CalculateOperator {
     }
 
     public static void main(String[] args) {
-        String a = "5*2-3*6+5*3-8/4";
+        String a = "5*(2+3)-(4+9)";
         System.out.println(new CalculateOperator().operator(a));
     }
 }
